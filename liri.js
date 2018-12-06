@@ -51,7 +51,25 @@ aios
                 console.log("Language", data.language);
                 console.log('Movie plot', data.movie.plot);
                 console.log('Actors', data.actors);
-
             })
+                .catch(err => {
+                    console.log('Mr. Nobody')
+                })
     })
 //node liri.js movie-this '<movie name here>'
+const axios = new axios();
+aios
+    .search({type: 'title', query: 'Space Jam'})
+    then(response => {
+        axios
+            .request(response.tracks.items[0].href)
+            then(data => {
+                console.log('Venue Name', data.venue.name);
+                console.log('Venue Location', data.venue.location);
+                console.log('Event Date', data.event.date (MM/DD/YYYY));
+            })
+                .catch(err => {
+                    console.log('Error occured' + err);
+                })
+    })
+//node liri.js concert-this <artist/band name here>
