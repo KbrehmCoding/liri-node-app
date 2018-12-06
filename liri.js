@@ -37,7 +37,7 @@ spotify
 //         console.error('Error occurred: ' + err);
 //     });
 const axios = new axios();
-aios
+axios
     .search({type: 'title', query: 'Space Jam'})
     then(response => {
         axios
@@ -58,7 +58,7 @@ aios
     })
 //node liri.js movie-this '<movie name here>'
 const axios = new axios();
-aios
+axios
     .search({type: 'title', query: 'Space Jam'})
     then(response => {
         axios
