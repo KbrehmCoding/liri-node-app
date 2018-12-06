@@ -6,7 +6,7 @@ const Spotify = require('node-spotify-api');
 const keys = require('./keys');
 
 const spotify = new Spotify(keys.spotify);
-
+//node liri.js spotify-this-song '<song name here>'
 spotify
     .search({ type: 'track', query: 'All the Small Things' })
     .then(response => {
@@ -36,3 +36,22 @@ spotify
 //     .catch(function(err) {
 //         console.error('Error occurred: ' + err);
 //     });
+const axios = new axios();
+aios
+    .search({type: 'title', query: 'Space Jam'})
+    then(response => {
+        axios
+            .request(response.tracks.items[0].href)
+            then(data => {
+                console.log('Movie Title', data.movie.title);
+                console.log('Year', data.year);
+                console.log('IMDB rating', data.IMDB.rating);
+                console.log('Rotten Tomatoes Rating', data.Rotten.Tomatoes,rating);
+                console.log("");
+                console.log("Language", data.language);
+                console.log('Movie plot', data.movie.plot);
+                console.log('Actors', data.actors);
+
+            })
+    })
+//node liri.js movie-this '<movie name here>'
