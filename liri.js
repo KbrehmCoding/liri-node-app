@@ -38,7 +38,7 @@ spotify
 //     });
 const axios = new axios();
 axios
-    .search({type: 'title', query: 'Space Jam'})
+    .search({type: 'title', query: ''})
     then(response => {
         axios
             .request(response.tracks.items[0].href)
@@ -59,7 +59,7 @@ axios
 //node liri.js movie-this '<movie name here>'
 const axios = new axios();
 axios
-    .search({type: 'title', query: 'Space Jam'})
+    .search({type: 'event', query: ''})
     then(response => {
         axios
             .request(response.tracks.items[0].href)
