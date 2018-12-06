@@ -7,27 +7,29 @@ const keys = require('./keys');
 
 const spotify = new Spotify(keys.spotify);
 //node liri.js spotify-this-song '<song name here>'
-spotify
-    .search({ type: 'track', query: 'All the Small Things' })
-    .then(response => {
-        // console.log('response', JSON.stringify(response));
-        spotify
-            .request(response.tracks.items[0].href)
-            .then(data => {
-                // console.log('data', JSON.stringify(data));
-                console.log('album name', data.album.name);
-                console.log('artist name', data.artists[0].name);
-                console.log('song name', data.name);
-                console.log('preview url', data.preview_url);
-            })
-            .catch(err => {
-                console.error('Error occurred: ' + err);
-            });
-    })
-    .catch(err => {
-        console.log('err', err);
-    });
 
+if("spotify-this-song <' '>") {
+    spotify
+        .search({ type: 'track', query: ' ' })
+        .then(response => {
+            // console.log('response', JSON.stringify(response));
+            spotify
+                .request(response.tracks.items[0].href)
+                .then(data => {
+                    // console.log('data', JSON.stringify(data));
+                    console.log('album name', data.album.name);
+                    console.log('artist name', data.artists[0].name);
+                    console.log('song name', data.name);
+                    console.log('preview url', data.preview_url);
+                })
+                .catch(err => {
+                    console.error('Error occurred: ' + err);
+            });
+        })
+        .catch(err => {
+            console.log('err', err);
+    });
+};
 // spotify
 //     .request('https://api.spotify.com/v1/tracks/7yCPwWs66K8Ba5lFuU2bcx')
 //     .then(function(data) {
@@ -38,7 +40,7 @@ spotify
 //     });
 const axios = new axios();
 axios
-    .search({type: 'title', query: ''})
+    .search({type: 'title', query: ' '})
     then(response => {
         axios
             .request(response.tracks.items[0].href)
@@ -59,7 +61,7 @@ axios
 //node liri.js movie-this '<movie name here>'
 const axios = new axios();
 axios
-    .search({type: 'event', query: ''})
+    .search({type: 'event', query: ' '})
     then(response => {
         axios
             .request(response.tracks.items[0].href)
@@ -73,3 +75,4 @@ axios
                 })
     })
 //node liri.js concert-this <artist/band name here>
+//"https://rest.bandsintown.com/artists/" + artist + "/events?app_id=codingbootcamp"
