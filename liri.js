@@ -54,7 +54,7 @@ axios.get("http://www.omdbapi.com/?i=tt3896198&apikey=2ad14841" + movie + proces
                 console.log('Actors', data.actors);
             })
                 .catch(err => {
-                    console.log('Mr. Nobody')
+                    console.log(axios.get("http://www.omdbapi.com/?i=tt3896198&apikey=2ad14841" + "Mr._Nobody" + process.env.OMDB_ID))
                 })
     })
 //node liri.js movie-this '<movie name here>'
