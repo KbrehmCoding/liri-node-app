@@ -37,7 +37,7 @@ spotify
 axios.get("http://www.omdbapi.com/?i=tt3896198&apikey=2ad14841" + "tangled" + process.env.OMDB_ID)
     .then(response => {
         axios
-            .request(response.tracks.items[0].href)
+            .request(response.movie.items[0].href)
             then(data => {
                 console.log('Movie Title', data.title);
                 console.log('Year', data.year);
@@ -50,14 +50,14 @@ axios.get("http://www.omdbapi.com/?i=tt3896198&apikey=2ad14841" + "tangled" + pr
             })
                 .catch(err => {
                     console.log(axios.get("http://www.omdbapi.com/?i=tt3896198&apikey=2ad14841" + "Mr._Nobody" + process.env.OMDB_ID))
-                })
-    })
+                });
+    });
 //node liri.js movie-this '<movie name here>'
 
-axios.get("https://rest.bandsintown.com/artists/" + artist + "/events?app_id=dotenv")
+axios.get("https://rest.bandsintown.com/artists/" + "cher" + "/events?app_id=dotenv")
     .then(response => {
         axios
-            .request(response.tracks.items[0].href)
+            .request(response.band.items[0].href)
             then(data => {
                 console.log('Venue Name', data.venue.name);
                 console.log('Venue Location', data.venue.location);
@@ -65,7 +65,7 @@ axios.get("https://rest.bandsintown.com/artists/" + artist + "/events?app_id=dot
             })
                 .catch(err => {
                     console.log('Error occured' + err);
-                })
-    })
+                });
+    });
 //node liri.js concert-this <artist/band name here>
 //"https://rest.bandsintown.com/artists/" + artist + "/events?app_id=codingbootcamp"
