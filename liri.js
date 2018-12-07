@@ -36,21 +36,18 @@ spotify
 //     .catch(function(err) {
 //         console.error('Error occurred: ' + err);
 //     });
-const axios = new axios();
-axios
-
-axios.get("http://www.omdbapi.com/?i=tt3896198&apikey=2ad14841" + movie + process.env.OMDB_ID)
-    then(response => {
+axios.get("http://www.omdbapi.com/?i=tt3896198&apikey=2ad14841" + "tangled" + process.env.OMDB_ID)
+    .then(response => {
         axios
             .request(response.tracks.items[0].href)
             then(data => {
-                console.log('Movie Title', data.movie.title);
-                console.log('Year', data.year);
+                console.log('Movie Title', data.t);
+                console.log('Year', data.y);
                 console.log('IMDB rating', data.IMDB.rating);
                 console.log('Rotten Tomatoes Rating', data.Rotten.Tomatoes,rating);
-                console.log("");
+                console.log("Country", data.country);
                 console.log("Language", data.language);
-                console.log('Movie plot', data.movie.plot);
+                console.log('Movie plot', data.plot);
                 console.log('Actors', data.actors);
             })
                 .catch(err => {
@@ -58,10 +55,9 @@ axios.get("http://www.omdbapi.com/?i=tt3896198&apikey=2ad14841" + movie + proces
                 })
     })
 //node liri.js movie-this '<movie name here>'
-const axios = new axios();
-axios
+
 axios.get("https://rest.bandsintown.com/artists/" + artist + "/events?app_id=dotenv")
-    then(response => {
+    .then(response => {
         axios
             .request(response.tracks.items[0].href)
             then(data => {
