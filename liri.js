@@ -8,28 +8,26 @@ const keys = require('./keys');
 const spotify = new Spotify(keys.spotify);
 //node liri.js spotify-this-song '<song name here>'
 
-if("spotify-this-song <' '>") {
-    spotify
-        .search({ type: 'track', query: ' ' })
-        .then(response => {
-            // console.log('response', JSON.stringify(response));
-            spotify
-                .request(response.tracks.items[0].href)
-                .then(data => {
-                    // console.log('data', JSON.stringify(data));
-                    console.log('album name', data.album.name);
-                    console.log('artist name', data.artists[0].name);
-                    console.log('song name', data.name);
-                    console.log('preview url', data.preview_url);
-                })
-                .catch(err => {
-                    console.error('Error occurred: ' + err);
+spotify
+    .search({ type: 'track', query: ' ' })
+    .then(response => {
+        // console.log('response', JSON.stringify(response));
+        spotify
+            .request(response.tracks.items[0].href)
+            .then(data => {
+                // console.log('data', JSON.stringify(data));
+                console.log('album name', data.album.name);
+                console.log('artist name', data.artists[0].name);
+                console.log('song name', data.name);
+                console.log('preview url', data.preview_url);
+            })
+            .catch(err => {
+                console.error('Error occurred: ' + err);
             });
-        })
-        .catch(err => {
-            console.log('err', err);
+    })
+    .catch(err => {
+        console.log('err', err);
     });
-};
 // spotify
 //     .request('https://api.spotify.com/v1/tracks/7yCPwWs66K8Ba5lFuU2bcx')
 //     .then(function(data) {
@@ -40,7 +38,8 @@ if("spotify-this-song <' '>") {
 //     });
 const axios = new axios();
 axios
-    .search({type: 'title', query: ' '})
+
+axios.get("http://www.omdbapi.com/?i=tt3896198&apikey=2ad14841" + movie + process.env.OMDB_ID)
     then(response => {
         axios
             .request(response.tracks.items[0].href)
@@ -61,7 +60,7 @@ axios
 //node liri.js movie-this '<movie name here>'
 const axios = new axios();
 axios
-    .search({type: 'event', query: ' '})
+axios.get("https://rest.bandsintown.com/artists/" + artist + "/events?app_id=dotenv")
     then(response => {
         axios
             .request(response.tracks.items[0].href)
