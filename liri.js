@@ -67,7 +67,7 @@ function movie-this(movieTitle) {
 
 // node liri.js concert-this <artist/band name here>
 var bandName = "";
-function concer-this(bandName) {
+function concert-this(bandName) {
     var queryUrl = 'https://rest.bandsintown.com/artists/' + bandName + '/events?app_id=codingbootcamp';
     axios.get(queryUrl)
         .then(
