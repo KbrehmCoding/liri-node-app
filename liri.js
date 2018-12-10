@@ -7,7 +7,7 @@ const moment = require("moment");
 const nodeArgs = provess.argv
 // const spotify = new Spotify(keys.spotify);
 
-//node liri.js spotify-this-song '<song name here>'
+// node liri.js spotify-this-song '<song name here>'
 // var query = "";
 // for (var i = 2; i < nodeArgs.length; i++) {
 
@@ -19,9 +19,11 @@ const nodeArgs = provess.argv
 
 //     }
 // }
+// function callSpotifyApi {
 // spotify
 //     .search({ type: 'track', query: "" })
-//     .then(response => {
+//     .then(
+//         function(response) {
 //         // console.log('response', JSON.stringify(response));
 //         spotify
 //             .request(response.tracks.items[0].href)
@@ -36,7 +38,7 @@ const nodeArgs = provess.argv
 //                 console.error('Error occurred: ' + err);
 //             });
 //     });
-
+// }
 // spotify
 //     .request('https://api.spotify.com/v1/tracks/7yCPwWs66K8Ba5lFuU2bcx')
 //     .then(function(data) {
@@ -60,7 +62,7 @@ for (var i = 2; i < nodeArgs.length; i++) {
 }
 // var nodeArgs = process.argv;
 // const queryUrl = 'http://www.omdbapi.com/?apikey=${keys.OMDB.secret}&t=' + movieTitle
-function movie-this(movieTitle) {
+function callOmbdApi(movieTitle) {
     const queryUrl = 'http://www.omdbapi.com/?apikey=${keys.OMDB.secret}&t=' + movieTitle
     axios.get(queryUrl)
         .then(
@@ -97,7 +99,7 @@ for (var i = 2; i < nodeArgs.length; i++) {
 
     }
 }
-function concert-this(bandName) {
+function callBandsInTownApi(bandName) {
     var queryUrl = 'https://rest.bandsintown.com/artists/' + bandName + '/events?app_id=codingbootcamp';
     axios.get(queryUrl)
         .then(
