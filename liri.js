@@ -20,6 +20,9 @@ const nodeArgs = provess.argv
 //     }
 // }
 // function callSpotifyApi {
+//     if (input === 'spotify-this') {
+//         callSpotifyApi();
+//     }
 // spotify
 //     .search({ type: 'track', query: "" })
 //     .then(
@@ -63,6 +66,9 @@ for (var i = 2; i < nodeArgs.length; i++) {
 // var nodeArgs = process.argv;
 // const queryUrl = 'http://www.omdbapi.com/?apikey=${keys.OMDB.secret}&t=' + movieTitle
 function callOmbdApi(movieTitle) {
+    if (input === 'movie-this') {
+        callOmdbApi();
+    }
     const queryUrl = 'http://www.omdbapi.com/?apikey=${keys.OMDB.secret}&t=' + movieTitle
     axios.get(queryUrl)
         .then(
@@ -88,31 +94,34 @@ function callOmbdApi(movieTitle) {
 }
 
 // node liri.js concert-this <artist/band name here> s
-var bandName = "";
-for (var i = 2; i < nodeArgs.length; i++) {
+// var bandName = "";
+// for (var i = 2; i < nodeArgs.length; i++) {
 
-    if (i > 2 && i < nodeArgs.length) {
-    bandName = bandName + "+" + nodeArgs[i];
-    }
-    else {
-    bandName += nodeArgs[i];
+//     if (i > 2 && i < nodeArgs.length) {
+//     bandName = bandName + "+" + nodeArgs[i];
+//     }
+//     else {
+//     bandName += nodeArgs[i];
 
-    }
-}
-function callBandsInTownApi(bandName) {
-    var queryUrl = 'https://rest.bandsintown.com/artists/' + bandName + '/events?app_id=codingbootcamp';
-    axios.get(queryUrl)
-        .then(
-            function (response) {
-            // console.log('response', JSON.stringify(response.data));
-            response.data.forEach(concert => {
-                console.log('Venue Name: ', concert.venue.name);
-                console.log('Venue Location: ', `${concert.venue.city}, ${concert.venue.country}`);
-                console.log(moment('Event Date: ', concert.datetime)).format('MM Do YYYY');
-            });
-        })
-        .catch(err => {
-            console.log('Error occurred: ' + err);
-        });
-}
+//     }
+// }
+// function callBandsInTownApi(bandName) {
+//     if (input === 'concert-this') {
+//         callBandsInTownApi();
+//     }
+//     var queryUrl = 'https://rest.bandsintown.com/artists/' + bandName + '/events?app_id=codingbootcamp';
+//     axios.get(queryUrl)
+//         .then(
+//             function (response) {
+//             // console.log('response', JSON.stringify(response.data));
+//             response.data.forEach(concert => {
+//                 console.log('Venue Name: ', concert.venue.name);
+//                 console.log('Venue Location: ', `${concert.venue.city}, ${concert.venue.country}`);
+//                 console.log(moment('Event Date: ', concert.datetime)).format('MM Do YYYY');
+//             });
+//         })
+//         .catch(err => {
+//             console.log('Error occurred: ' + err);
+//         });
+// }
 
