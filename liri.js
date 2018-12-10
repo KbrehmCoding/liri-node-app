@@ -1,11 +1,11 @@
 require("dotenv").config();
 
 const axios = require('axios');
-const Spotify = require('node-spotify-api');
+// const Spotify = require('node-spotify-api');
 
 const keys = require('./keys');
 
-const spotify = new Spotify(keys.spotify);
+// const spotify = new Spotify(keys.spotify);
 
 //node liri.js spotify-this-song '<song name here>'
 
@@ -39,19 +39,9 @@ const spotify = new Spotify(keys.spotify);
 // node liri.js movie-this '<movie name here>'
 var movieTitle = "";
 // var nodeArgs = process.argv;
-const queryUrl = 'http://www.omdbapi.com/?apikey=${keys.OMDB.secret}&t=' + movieTitle
-
-// for (var i = 2; i < nodeArgs.length; i++) {
-
-//     if (i > 2 && i < nodeArgs.length) {
-//     movieTitle = movieTitle + "+" + nodeArgs[i];
-//     }
-//     else {
-//     movieTitle += nodeArgs[i];
-//     }
-// }
-movie-this +
-if (movieTitle) {
+// const queryUrl = 'http://www.omdbapi.com/?apikey=${keys.OMDB.secret}&t=' + movieTitle
+function movie-this(movieTitle) {
+    const queryUrl = 'http://www.omdbapi.com/?apikey=${keys.OMDB.secret}&t=' + movieTitle
     axios.get(queryUrl)
         .then(
             function(response) {
@@ -59,8 +49,7 @@ if (movieTitle) {
             console.log('Movie Title: ', response.data.Title);
             console.log('Year: ', response.data.Year);
             console.log('IMDB rating: ', response.data.imdbRating);
-            // TODO: Figure out how to get this from the data.
-            // console.log('Rotten Tomatoes Rating: ', response.data.);
+            console.log('Rotten Tomatoes Rating: ', response.data.movieRatings[1]);
             console.log("Country: ", response.data.Country);
             console.log("Language: ", response.data.Language);
             console.log('Movie plot: ', response.data.Plot);
@@ -77,9 +66,9 @@ if (movieTitle) {
 }
 
 // node liri.js concert-this <artist/band name here>
-var bandName = process.argv[2];
-const queryUrl = 'https://rest.bandsintown.com/artists/' + bandName + '/events?app_id=codingbootcamp';
-if (bandName) {
+var bandName = "";
+function concer-this(bandName) {
+    var queryUrl = 'https://rest.bandsintown.com/artists/' + bandName + '/events?app_id=codingbootcamp';
     axios.get(queryUrl)
         .then(
             function (response) {
