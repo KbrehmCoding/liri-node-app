@@ -2,15 +2,25 @@ require("dotenv").config();
 
 const axios = require('axios');
 // const Spotify = require('node-spotify-api');
-
 const keys = require('./keys');
-
+const moment = require("moment");
+const nodeArgs = provess.argv
 // const spotify = new Spotify(keys.spotify);
 
 //node liri.js spotify-this-song '<song name here>'
+// var query = "";
+// for (var i = 2; i < nodeArgs.length; i++) {
 
+//     if (i > 2 && i < nodeArgs.length) {
+//     query = query + "+" + nodeArgs[i];
+//     }
+//     else {
+//     query += nodeArgs[i];
+
+//     }
+// }
 // spotify
-//     .search({ type: 'track', query: 'another one bites the dust' })
+//     .search({ type: 'track', query: "" })
 //     .then(response => {
 //         // console.log('response', JSON.stringify(response));
 //         spotify
@@ -38,6 +48,16 @@ const keys = require('./keys');
 
 // node liri.js movie-this '<movie name here>'
 var movieTitle = "";
+for (var i = 2; i < nodeArgs.length; i++) {
+
+    if (i > 2 && i < nodeArgs.length) {
+    movieTitle = movieTitle + "+" + nodeArgs[i];
+    }
+    else {
+    movieTitle += nodeArgs[i];
+
+    }
+}
 // var nodeArgs = process.argv;
 // const queryUrl = 'http://www.omdbapi.com/?apikey=${keys.OMDB.secret}&t=' + movieTitle
 function movie-this(movieTitle) {
@@ -65,8 +85,18 @@ function movie-this(movieTitle) {
         });
 }
 
-// node liri.js concert-this <artist/band name here>
+// node liri.js concert-this <artist/band name here> s
 var bandName = "";
+for (var i = 2; i < nodeArgs.length; i++) {
+
+    if (i > 2 && i < nodeArgs.length) {
+    bandName = bandName + "+" + nodeArgs[i];
+    }
+    else {
+    bandName += nodeArgs[i];
+
+    }
+}
 function concert-this(bandName) {
     var queryUrl = 'https://rest.bandsintown.com/artists/' + bandName + '/events?app_id=codingbootcamp';
     axios.get(queryUrl)
@@ -76,7 +106,7 @@ function concert-this(bandName) {
             response.data.forEach(concert => {
                 console.log('Venue Name: ', concert.venue.name);
                 console.log('Venue Location: ', `${concert.venue.city}, ${concert.venue.country}`);
-                console.log('Event Date: ', concert.datetime);
+                console.log(moment('Event Date: ', concert.datetime)).format('MM Do YYYY');
             });
         })
         .catch(err => {
