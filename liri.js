@@ -37,11 +37,24 @@ const spotify = new Spotify(keys.spotify);
 //     });
 
 // node liri.js movie-this '<movie name here>'
-var movieTitle = process.argv[2];
+var movieTitle = "";
+// var nodeArgs = process.argv;
 const queryUrl = 'http://www.omdbapi.com/?apikey=${keys.OMDB.secret}&t=' + movieTitle
+
+// for (var i = 2; i < nodeArgs.length; i++) {
+
+//     if (i > 2 && i < nodeArgs.length) {
+//     movieTitle = movieTitle + "+" + nodeArgs[i];
+//     }
+//     else {
+//     movieTitle += nodeArgs[i];
+//     }
+// }
+movie-this +
 if (movieTitle) {
-    axios.get()
-        .then(response => {
+    axios.get(queryUrl)
+        .then(
+            function(response) {
             // console.log('response: ', JSON.stringify(response.data));
             console.log('Movie Title: ', response.data.Title);
             console.log('Year: ', response.data.Year);
@@ -68,7 +81,8 @@ var bandName = process.argv[2];
 const queryUrl = 'https://rest.bandsintown.com/artists/' + bandName + '/events?app_id=codingbootcamp';
 if (bandName) {
     axios.get(queryUrl)
-        .then(response => {
+        .then(
+            function (response) {
             // console.log('response', JSON.stringify(response.data));
             response.data.forEach(concert => {
                 console.log('Venue Name: ', concert.venue.name);
