@@ -1,5 +1,5 @@
 require('dotenv').config();
-
+const fs = require('fs');
 const axios = require('axios');
 const moment = require('moment');
 const Spotify = require('node-spotify-api');
@@ -70,6 +70,15 @@ function callBandsInTownApi(bandName) {
         });
 }
 
+function doWhatItSays() {
+    fs.readFile("random.txt", "utf8", function(error, data) {
+        if (error) {
+            return console.log(error);
+        }
+            console.log("node liri.js " + data);
+        });
+}
+
 function parseInputs() {
     const args = process.argv.slice(2);
     if (args[0] === 'spotify-this-song') {
@@ -79,10 +88,9 @@ function parseInputs() {
     } else if (args[0] === 'concert-this') {
         callBandsInTownApi(args[1]);
     } else if (args[0] === 'do-what-it-says') {
-        // TODO
+        doWhatItSays(args[1]);
     } else {
         console.error('Invalid Command');
     }
 }
-
 parseInputs();
