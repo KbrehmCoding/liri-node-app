@@ -8,8 +8,6 @@ const keys = require('./keys');
 
 const spotify = new Spotify(keys.spotify);
 
-// node liri.js spotify-this-song <song name here>
-
 function callSpotifyApi(song) {
     // TODO: Make sure to load correct song.
     if (!song) song = 'The Sign by Ace of Base';
@@ -31,8 +29,6 @@ function callSpotifyApi(song) {
                 });
         });
 }
-
-// node liri.js movie-this <movie name here>
 
 function callOmbdApi(movieTitle) {
     if (movieTitle) {
@@ -58,8 +54,6 @@ function callOmbdApi(movieTitle) {
             });
     }
 }
-
-// node liri.js concert-this <artist/band name here>
 
 function callBandsInTownApi(bandName) {
     axios.get(`https://rest.bandsintown.com/artists/${bandName}/events?app_id=codingbootcamp`)
