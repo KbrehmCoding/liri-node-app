@@ -70,12 +70,13 @@ function callBandsInTownApi(bandName) {
         });
 }
 
-function doWhatItSays() {
+function doWhatItSays(action,data) {
     fs.readFile("random.txt", "utf8", function(error, data) {
         if (error) {
             return console.log(error);
         }
-            console.log("node liri.js " + data);
+        data.forEach(line => { const action = line.split(‘,’); });
+        parseInputs(action[0], action[1]);
         });
 }
 
