@@ -8,6 +8,9 @@ const keys = require('./keys');
 
 const spotify = new Spotify(keys.spotify);
 
+const action = process.argv[2];
+const data = process.argv.slice(3) ;
+
 function callSpotifyApi(song) {
     // TODO: Make sure to load correct song.
     if (!song) song = 'The Sign by Ace of Base';
@@ -70,28 +73,33 @@ function callBandsInTownApi(bandName) {
         });
 }
 
-function doWhatItSays(action,data) {
-    fs.readFile("random.txt", "utf8", function(error, data) {
+function doWhatItSays() {
+    fs.readFile("random.txt", "utf8", function (error, data) {
+
         if (error) {
             return console.log(error);
         }
-        data.forEach(line => { const action = line.split(‘,’); });
-        parseInputs(action[0], action[1]);
-        });
+        console.log(data);
+
+            var command = data.split(',');
+            console.log(command);
+            parseInputs(command[0], command[1])
+            //not sure what to do with the const action now to finish running the line from random.txt
+    });
+
 }
 
-function parseInputs() {
-    const args = process.argv.slice(2);
-    if (args[0] === 'spotify-this-song') {
-        callSpotifyApi(args[1]);
-    } else if (args[0] === 'movie-this') {
-        callOmbdApi(args[1]);
-    } else if (args[0] === 'concert-this') {
-        callBandsInTownApi(args[1]);
-    } else if (args[0] === 'do-what-it-says') {
-        doWhatItSays(args[1]);
+function parseInputs(action, data) {
+    if (action === 'spotify-this-song') {
+        callSpotifyApi(data);
+    } else if (action === 'movie-this') {
+        callOmbdApi(data);
+    } else if (action === 'concert-this') {
+        callBandsInTownApi(data);
+    } else if (action === 'do-what-it-says') {
+        doWhatItSays();
     } else {
         console.error('Invalid Command');
     }
 }
-parseInputs();
+parseInputs(action,data);
